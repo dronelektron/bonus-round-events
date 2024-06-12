@@ -23,19 +23,19 @@ Called when the bonus round is over
 forward void BonusRound_OnReset(int client);
 ```
 
-Called when the `client` was or became a loser
+Called when the `client` becomes the loser
 
 ```sourcepawn
 forward void BonusRound_OnLoser(int client);
 ```
 
-Called when the `client` was or became a winner
+Called when the `client` becomes the winner
 
 ```sourcepawn
 forward void BonusRound_OnWinner(int client);
 ```
 
-Called when the `client` was or became a spectator
+Called when the `client` becomes the spectator
 
 ```sourcepawn
 forward void BonusRound_OnSpectator(int client);
