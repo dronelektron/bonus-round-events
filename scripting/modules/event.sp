@@ -9,15 +9,15 @@ public void Event_RoundWin(Event event, const char[] name, bool dontBroadcast) {
     int winTeam = event.GetInt("team");
 
     UseCase_BonusRoundStart(winTeam);
-    HookPlayerSpawn(true);
+    HookPlayerTeam(true);
 }
 
 public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
     UseCase_BonusRoundEnd();
-    HookPlayerSpawn(false);
+    HookPlayerTeam(false);
 }
 
-static void HookPlayerSpawn(bool hook) {
+static void HookPlayerTeam(bool hook) {
     if (g_playerTeamHooked == hook) {
         return;
     }
