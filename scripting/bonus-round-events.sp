@@ -1,5 +1,11 @@
 #include <sourcemod>
 
+#include "bonus-round-events/use-case"
+
+#include "modules/event.sp"
+#include "modules/forward.sp"
+#include "modules/use-case.sp"
+
 public Plugin myinfo = {
     name = "Bonus round events",
     author = "Dron-elektron",
@@ -7,3 +13,8 @@ public Plugin myinfo = {
     version = "0.1.0",
     url = "https://github.com/dronelektron/bonus-round-events"
 };
+
+public void OnPluginStart() {
+    Event_Create();
+    Forward_Create();
+}
