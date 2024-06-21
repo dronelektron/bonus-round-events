@@ -18,3 +18,7 @@ public void OnPluginStart() {
     Event_Create();
     Forward_Create();
 }
+
+public void OnMapEnd() {
+    Event_HookPlayerTeam(false);
+}

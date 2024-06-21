@@ -17,7 +17,7 @@ Allows you to use custom events in the bonus round
 
 ### API
 
-Called when the bonus round is over
+Called after `dod_round_start` event
 
 ```sourcepawn
 forward void BonusRound_OnReset(int client);

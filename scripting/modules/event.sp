@@ -5,19 +5,7 @@ void Event_Create() {
     HookEvent("dod_round_start", Event_RoundStart);
 }
 
-public void Event_RoundWin(Event event, const char[] name, bool dontBroadcast) {
-    int winTeam = event.GetInt("team");
-
-    UseCase_BonusRoundStart(winTeam);
-    HookPlayerTeam(true);
-}
-
-public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
-    UseCase_BonusRoundEnd();
-    HookPlayerTeam(false);
-}
-
-static void HookPlayerTeam(bool hook) {
+void Event_HookPlayerTeam(bool hook) {
     if (g_playerTeamHooked == hook) {
         return;
     }
@@ -29,6 +17,18 @@ static void HookPlayerTeam(bool hook) {
     }
 
     g_playerTeamHooked = hook;
+}
+
+public void Event_RoundWin(Event event, const char[] name, bool dontBroadcast) {
+    int winTeam = event.GetInt("team");
+
+    UseCase_BonusRoundStart(winTeam);
+    Event_HookPlayerTeam(true);
+}
+
+public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
+    UseCase_BonusRoundEnd();
+    Event_HookPlayerTeam(false);
 }
 
 public void Event_PlayerTeam(Event event, const char[] name, bool dontBroadcast) {
