@@ -1,7 +1,12 @@
+static bool g_isBonusRound = false;
 static int g_winTeam;
 
 void UseCase_BonusRoundStart(int winTeam) {
+    g_isBonusRound = true;
     g_winTeam = winTeam;
+
+    Event_HookPlayerTeam();
+    Forward_OnStart();
 
     for (int client = 1; client <= MaxClients; client++) {
         if (IsClientInGame(client)) {
@@ -13,6 +18,15 @@ void UseCase_BonusRoundStart(int winTeam) {
 }
 
 void UseCase_BonusRoundEnd() {
+    if (!g_isBonusRound) {
+        return;
+    }
+
+    g_isBonusRound = false;
+
+    Event_UnhookPlayerTeam();
+    Forward_OnEnd();
+
     for (int client = 1; client <= MaxClients; client++) {
         if (IsClientInGame(client)) {
             Forward_OnReset(client);
