@@ -20,5 +20,5 @@ public void OnPluginStart() {
 }
 
 public void OnMapEnd() {
-    Event_HookPlayerTeam(false);
+    UseCase_BonusRoundEnd();
 }
